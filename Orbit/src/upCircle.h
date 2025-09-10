@@ -7,31 +7,21 @@ struct UpCircle {
 public:
 
   UpCircle() = default;
-  UpCircle(float radius, ofVec3f posOffset)
-  : radius(radius), posOffset(posOffset) {
-    float r = radius - Config::RadiusDiff;
-    float h = r * 8;
-    cylinder.set(r, h);
-    cylinder.setPosition(posOffset.x, h/2 + posOffset.y, posOffset.z);
-    cylinder.setResolution(32, 32);
-
-    offSet = h/4;
-    pos.y = -offSet + posOffset.y;
+  UpCircle(float radius, ofVec3f place)
+  : basicR(radius), place(place) {
+    setCylinder(radius);
   };
 
   void update() {
-    angle += ANGLE_SPEED;
+    float delay = 1.0f;
+    if(ofGetElapsedTimef() < delay) return;
 
-    if(pos.y > cylinder.getHeight() + offSet + posOffset.y) {
-      return;
-    } else {
-      pos.y += UP;
-    }
+    xzRotate();
 
-    //デザイン  間
-    float polyRadius = radius + Config::Gap;
-    pos.x = polyRadius * cos(angle) + posOffset.x;
-    pos.z = polyRadius * sin(angle) + posOffset.z;
+    bool isRunning = addHeight(delay, cylinder.getHeight());
+    if(isRunning) return;
+
+    updateRadius();
 
     polyLine.addVertex(pos);
   };
@@ -40,16 +30,44 @@ public:
     Utils::draw(cylinder, polyLine);
   }
 
-private:
-  static constexpr float ANGLE_SPEED = 0.05f;
-  static constexpr float UP = ANGLE_SPEED * 20.0f;
+protected:
   ofCylinderPrimitive cylinder;
   ofPolyline polyLine;
-  ofVec3f posOffset;
-  float radius;
-  float offSet;
-  //インスタンスではstatic不要。同じ関数呼び出しで保持するにはstatic必要 counterとして
-  float angle = 0;
+  ofVec3f place;
+//  cylinderとpolyLineの軸となる
+  float basicR;
   ofVec3f pos;
-  float cylStart;
+  virtual void updateRadius(){};
+
+private:
+  void setCylinder(float basicR) {
+    float r = basicR - Config::RadiusDiff;
+    float h = r * 1;
+    cylinder.set(r, h);
+    cylinder.setPosition(place.x, place.y, place.z);
+    cylinder.setResolution(32, 32);
+  }
+
+  void xzRotate() {
+    float polyRadius = basicR + Config::Gap;
+    float speed = ofGetElapsedTimef() * 6.227f; //README.md参照
+
+    pos.x = polyRadius * cos(speed) + place.x;
+    pos.z = polyRadius * sin(speed) + place.z;
+  }
+
+  bool addHeight(float delay, float cylinderHeihgt) {
+    float ajustedNow = ofGetElapsedTimef() - delay;
+    float targetTime = 2.5f;
+
+    float t = ofMin(ajustedNow, targetTime);
+    float progress = t / targetTime;
+
+    float startY = place.y - cylinderHeihgt / 2;
+    pos.y = startY + cylinderHeihgt * progress;
+
+    //progress=1で無限になるので明示的に終了
+    bool isRunning = progress >= 1.0f;
+    return isRunning;
+  }
 };
