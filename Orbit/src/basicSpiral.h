@@ -34,7 +34,7 @@ protected:
   ofCylinderPrimitive cylinder;
   ofPolyline polyLine;
   ofVec3f place;
-//  cylinderとpolyLineの軸となる
+  //  cylinderとpolyLineの軸となる
   float basicR;
   ofVec3f pos;
   virtual void updateRadius(){};
@@ -52,7 +52,7 @@ private:
     float polyRadius = basicR + Config::Gap;
     float speed = ofGetElapsedTimef() * 6.227f; //README.md参照
 
-    pos.x = polyRadius * cos(speed) + place.x;
+    pos.x = polyRadius * -cos(speed) + place.x;
     pos.z = polyRadius * sin(speed) + place.z;
   }
 
