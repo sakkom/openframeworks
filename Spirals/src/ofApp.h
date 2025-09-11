@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "basicSpiral.h"
+#include "helix.h"
 #include "turnCircle.h"
 #include "spiralCoverage.h"
 //#include "config.h"
@@ -31,7 +31,7 @@ class ofApp : public ofBaseApp{
   ofPolyline polyLine1, polyLine2;
   ofCylinderPrimitive cylinder2;
   float x, y, z;
-  std::optional<UpCircle> upCircle;
+  std::optional<Helix> helix;
   std::optional<TurnCircle> turnCircle;
   std::optional<SpiralCoverage> spiralCoverage;
 //  UpCircle upCircle;

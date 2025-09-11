@@ -6,8 +6,8 @@ void ofApp::setup(){
   ofSetFrameRate(60);
   ofSetBackgroundAuto(true);
 
-//  upCircle.emplace(25, ofVec3f(-350, -200, 0));
-  upCircle.emplace(150, ofVec3f(-200, -200, 0));
+//  helix.emplace(25, ofVec3f(-350, -200, 0));
+  helix.emplace(150, ofVec3f(-200, -200, 0));
   spiralCoverage.emplace(150, ofVec3f(200, -200, 0));
 //  turnCircle.emplace(80, ofVec3f(-220, 150, 0));
 }
@@ -16,7 +16,7 @@ void ofApp::setup(){
 
 void ofApp::update(){
   
-  upCircle->update();
+  helix->update();
   spiralCoverage->update();
 //  turnCircle->update();
 }
@@ -27,7 +27,7 @@ void ofApp::draw(){
 
   
 
-  upCircle->draw();
+  helix->draw();
   spiralCoverage->draw();
 //  turnCircle->draw();
 

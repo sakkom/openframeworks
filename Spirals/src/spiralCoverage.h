@@ -6,13 +6,13 @@
 //
 #pragma once
 #include "ofMain.h"
-#include "basicSpiral.h"
+#include "helix.h"
 #include "config.h"
 
-struct SpiralCoverage : public UpCircle {
+struct SpiralCoverage : public Helix {
 public:
   SpiralCoverage(float radius, ofVec3f place)
-  : UpCircle(radius, place), originalRadius(radius) {
+  : Helix(radius, place), originalRadius(radius) {
     float r = radius - Config::RadiusDiff;
     float h = r * 1;
     cylinder.set(r, h);

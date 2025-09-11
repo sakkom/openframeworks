@@ -35,7 +35,7 @@
 /* Begin PBXFileReference section */
 		191CD6FA2847E21E0085CBB6 /* of.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = of.entitlements; sourceTree = "<group>"; };
 		191EF70929D778A400F35F26 /* openFrameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = openFrameworks; path = ../../../libs/openFrameworks; sourceTree = SOURCE_ROOT; };
-		B930CC3A2E6D3DAF00BEDF1D /* basicSpiral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = basicSpiral.h; sourceTree = "<group>"; };
+		B930CC3A2E6D3DAF00BEDF1D /* helix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = helix.h; sourceTree = "<group>"; };
 		B930CC3B2E6D3DD800BEDF1D /* turnCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = turnCircle.h; sourceTree = "<group>"; };
 		B930CC3C2E6DA16200BEDF1D /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		B9479A232E71315900727E99 /* spiralCoverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spiralCoverage.h; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				B9479A232E71315900727E99 /* spiralCoverage.h */,
 				B930CC3C2E6DA16200BEDF1D /* config.h */,
 				B930CC3B2E6D3DD800BEDF1D /* turnCircle.h */,
-				B930CC3A2E6D3DAF00BEDF1D /* basicSpiral.h */,
+				B930CC3A2E6D3DAF00BEDF1D /* helix.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,

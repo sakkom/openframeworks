@@ -25,7 +25,6 @@ class ofApp : public ofBaseApp{
 
   ofEasyCam cam;
   vector<ofLight> lights;
-  ofMaterial material;
   vector<ofIcoSpherePrimitive> spheres;
-
+//  ofMaterial material;
 };

@@ -3,11 +3,11 @@
 #include "ofMain.h"
 #include "config.h"
 
-struct UpCircle {
+struct Helix {
 public:
 
-  UpCircle() = default;
-  UpCircle(float radius, ofVec3f place)
+  Helix() = default;
+  Helix(float radius, ofVec3f place)
   : basicR(radius), place(place) {
     setCylinder(radius);
   };
@@ -57,15 +57,12 @@ private:
   }
 
   bool addHeight(float delay, float cylinderHeihgt) {
-    float ajustedNow = ofGetElapsedTimef() - delay;
     float targetTime = 2.5f;
-
-    float t = ofMin(ajustedNow, targetTime);
-    float progress = t / targetTime;
+    float currentTime = ofMin(ofGetElapsedTimef() - delay, targetTime);
+    float progress = currentTime / targetTime;
 
     float startY = place.y - cylinderHeihgt / 2;
     pos.y = startY + cylinderHeihgt * progress;
-
     //progress=1で無限になるので明示的に終了
     bool isRunning = progress >= 1.0f;
     return isRunning;
