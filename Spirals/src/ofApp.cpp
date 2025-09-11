@@ -7,9 +7,13 @@ void ofApp::setup(){
   ofSetBackgroundAuto(true);
 
 //  helix.emplace(25, ofVec3f(-350, -200, 0));
+
   helix.emplace(150, ofVec3f(-200, -200, 0));
-  spiralCoverage.emplace(150, ofVec3f(200, -200, 0));
+//  spiralCoverage.emplace(150, ofVec3f(200, -200, 0));
+
 //  turnCircle.emplace(80, ofVec3f(-220, 150, 0));
+
+  archimedes.emplace(ofVec3f(0), 150, 10);
 }
 
 //--------------------------------------------------------------
@@ -17,8 +21,11 @@ void ofApp::setup(){
 void ofApp::update(){
   
   helix->update();
-  spiralCoverage->update();
+//  spiralCoverage->update();
+
 //  turnCircle->update();
+  if(ofGetElapsedTimef() < 1.0f) return;
+  archimedes->update();
 }
 
 //--------------------------------------------------------------
@@ -27,10 +34,13 @@ void ofApp::draw(){
 
   
 
+
   helix->draw();
-  spiralCoverage->draw();
+//  spiralCoverage->draw();
+
 //  turnCircle->draw();
 
+  archimedes->draw();
   cam.end();
 }
 

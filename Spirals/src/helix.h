@@ -52,7 +52,7 @@ private:
     float polyRadius = basicR + Config::Gap;
     float speed = ofGetElapsedTimef() * 6.227f; //README.md参照
 
-    pos.x = polyRadius * -cos(speed) + place.x;
+    pos.x = polyRadius * cos(speed) + place.x;
     pos.z = polyRadius * sin(speed) + place.z;
   }
 
