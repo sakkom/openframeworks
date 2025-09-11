@@ -4,6 +4,7 @@
 #include "helix.h"
 #include "turnCircle.h"
 #include "spiralCoverage.h"
+#include "archimedes.h"
 //#include "config.h"
 
 class ofApp : public ofBaseApp{
@@ -34,5 +35,6 @@ class ofApp : public ofBaseApp{
   std::optional<Helix> helix;
   std::optional<TurnCircle> turnCircle;
   std::optional<SpiralCoverage> spiralCoverage;
+  std::optional<Archimedes> archimedes;
 //  UpCircle upCircle;
 };
