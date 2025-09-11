@@ -1,10 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "helix.h"
+#include "./Helix/helix.h"
 #include "turnCircle.h"
 #include "spiralCoverage.h"
-#include "archimedes.h"
+#include "./Archimeds/archimedes.h"
 //#include "config.h"
 
 class ofApp : public ofBaseApp{
