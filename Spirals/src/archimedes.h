@@ -12,13 +12,11 @@ public:
     float currentTime = ofMin(ofGetElapsedTimef() - 1.0f, targetTime);
 
 //    float progress = currentTime / targetTime;　//うち->そと
-    float progress = currentTime / targetTime - 1.0;//そと->うち
+    float progress = 1.0f -  currentTime / targetTime;//そと->うち
     //    if(progress >= 1.0) return;
         if(progress >= 0.0) return;
 
-    float width = abs(maxR - center.x);
-
-    float radius = width * progress;
+    float radius = maxR * progress;
     float theta = ofGetElapsedTimef() * 6.227f;
     pos.x = radius * -cos(theta) + center.x;
     pos.z = radius * -sin(theta) + center.z ;
