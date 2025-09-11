@@ -1,6 +1,7 @@
 # 螺旋座標
+`ofSetFrameRate(60`
 ## Helix
-```
+```cpp
 float speed = ofGetElapsedTimef() * 6.227f
 pos.x = cos(speed);
 pos.z = sin(speed);
@@ -15,14 +16,14 @@ pos.z = sin(speed);
 1秒間で1周するには`2PI / 60.0f = 0.104f`の**間隔**が必要であることがわかる。
 当たり前であるが`update()`はframe毎に実行されるので`0.0167f * x = 0.104f = 6.227f`でスケールすれば**0.0167fの間隔から0.104fの間隔**になり一秒間に一周する。
 
-```
+```cpp
 //並行移動とスケールで任意の場所・大きさに
     pos.x = radius * cos(speed) + place.x;
     pos.z = radius * sin(speed) + place.z;
 ```
 #### <ins>高さをつけてHelixらしくする</ins>
 高さがなければ線の変化は生まれない。
-```
+```cpp
   bool addHeight(float delay, float cylinderHeihgt) {
     float targetTime = 2.5f;
         float currentTime = ofMin(ofGetElapsedTimef() - delay, targetTime);
