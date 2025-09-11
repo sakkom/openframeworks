@@ -1,5 +1,5 @@
 # 螺旋座標
-`ofSetFrameRate(60`
+`ofSetFrameRate(60`  
 ## ヘリックス
 ```cpp
 float speed = ofGetElapsedTimef() * 6.227f
@@ -37,8 +37,7 @@ pos.z = sin(speed);
   }
 ```
 ここで紹介する方法としてはどれくらいの時間で任意の高さ(ここではCylinderとセットのデザイン)に到達するのかである。  
-進捗度に応じた高さの位相`ajustedTime / targetTime`として`cylinderHeihgt * progress`で高さが決まる。  注意として`ofMin`を使い最大値を拘束され正規化された値は、1(100%)を超えることはないが、100%の位相でのループが走るのでbool値を返して例外処理を行い止める必要がある。また起動時の`ofGetElapsedTimef()`の不安定性から`delay`を設定している。
----
+進捗度に応じた高さの位相`ajustedTime / targetTime`として`cylinderHeihgt * progress`で高さが決まる。  注意として`ofMin`を使い最大値を拘束され正規化された値は、1(100%)を超えることはないが、100%の位相でのループが走るのでbool値を返して例外処理を行い止める必要がある。また起動時の`ofGetElapsedTimef()`の不安定性から`delay`を設定している。  
 ## 時間ベースのアルキメデススパイラル
 ```cpp
   Archimedes(ofVec3f center, float maxRadius, float targetTime) {
