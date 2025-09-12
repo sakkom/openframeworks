@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "ofGraphics.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -19,7 +20,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 
 void ofApp::update(){
-  
+
 //  helix->update();
 //  spiralCoverage->update();
 
@@ -31,9 +32,6 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
   cam.begin();
-
-  
-
 
 //  helix->draw();
 //  spiralCoverage->draw();

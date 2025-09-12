@@ -44,9 +44,7 @@ private:
     float r = basicR - Config::RadiusDiff;
     float h = r * 1;
     cylinder.set(r, h);
-    cylinder.setPosition(place.x, place.y, place.z);
-    cylinder.setResolution(32, 32);
-  }
+    cylinder.setPosition(place.x, place.y, place.z);    cylinder.setResolution(32, 32); }
 
   void xzRotate() {
     float polyRadius = basicR + Config::Gap;
