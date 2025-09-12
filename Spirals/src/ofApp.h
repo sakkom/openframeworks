@@ -2,9 +2,11 @@
 
 #include "ofMain.h"
 #include "./Helix/helix.h"
-#include "turnCircle.h"
+#include "ofVec2f.h"
+#include "./WaveHelix/waveHelix.h"
 #include "spiralCoverage.h"
 #include "./Archimeds/archimedes.h"
+#include "./Lemniscate/lemniscate.h"
 //#include "config.h"
 
 class ofApp : public ofBaseApp{
@@ -14,7 +16,6 @@ class ofApp : public ofBaseApp{
 		void update() override;
 		void draw() override;
 		void exit() override;
-
 		void keyPressed(int key) override;
 		void keyReleased(int key) override;
 		void mouseMoved(int x, int y ) override;
@@ -33,8 +34,9 @@ class ofApp : public ofBaseApp{
   ofCylinderPrimitive cylinder2;
   float x, y, z;
   std::optional<Helix> helix;
-  std::optional<TurnCircle> turnCircle;
+  std::optional<WaveHelix> waveHelix;
   std::optional<SpiralCoverage> spiralCoverage;
   std::optional<Archimedes> archimedes;
+  std::optional<Lemniscate> lemniscate;
 //  UpCircle upCircle;
 };
