@@ -57,8 +57,7 @@ void ofApp::draw(){
         ), 0, 1, baseMinOut + i * 20, (baseMaxOut + i * 20) * ratios[i] );
         float x = r * cos(theta);
         float y = r * sin(theta);
-
-        ofPushMatrix();
+c        ofPushMatrix();
         ofTranslate(x, y);
         ofRotateRad(theta);
         ofDrawRectangle(0, 0, 75, 8);
