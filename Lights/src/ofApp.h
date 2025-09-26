@@ -1,5 +1,6 @@
 #pragma once
 
+#include "of3dGraphics.h"
 #include "of3dPrimitives.h"
 #include "ofMain.h"
 #include "ofShadow.h"
@@ -28,12 +29,12 @@ class ofApp : public ofBaseApp{
 		/* */
 
 		ofEasyCam cam;
-		ofLight light;
+		ofLight light1, light2, light3;
 		// ofMaterial material;
 		ofBoxPrimitive box;
 		ofPlanePrimitive plane;
-		ofMesh planeMesh, boxMesh;
+		ofMesh planeMesh, boxMesh, cylinderMesh;
+		ofCylinderPrimitive cylinder;
 
-
-		ofMaterial planeMaterial, boxMaterial;
+		ofMaterial planeMaterial, boxMaterial, cylinderMaterial;
 };
