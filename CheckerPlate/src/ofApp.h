@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ofLight.h"
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
@@ -24,4 +25,6 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg) override;
 
 		ofEasyCam cam;
+		ofMaterial material;
+		ofLight light;
 };

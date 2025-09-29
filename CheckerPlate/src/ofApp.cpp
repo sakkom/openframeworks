@@ -1,11 +1,22 @@
 #include "ofApp.h"
+#include "of3dGraphics.h"
 #include "ofAppRunner.h"
+#include "ofColor.h"
 #include "ofGraphics.h"
 #include "ofMath.h"
+#include "ofShader.h"
+#include "ofUtils.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+  ofSetBackgroundColor(ofColor::black);
   ofSetLineWidth(5);
+  material.setDiffuseColor(ofFloatColor::white);
+  material.setSpecularColor(ofFloatColor::gray);
+  material.setShininess(100);
+  light.setPosition(200,200, 200);
+  light.enable();
+  ofEnableDepthTest();
 }
 
 //--------------------------------------------------------------
@@ -16,28 +27,39 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
   cam.begin();
-  float plateSize = 500.0;
-  float spacing = 30.0;
+  float spacing = 50.0;
   float width = ofGetWidth() / 2.0;
   float height = ofGetHeight() / 2.0;
 
   int rowIndex = 0;
   for(float row = -height; row < height; row+= spacing) {
     for(float col = -width; col < width; col+= spacing * 2) {
-      glm::vec3 start, end;
+
+      material.begin();
+      ofPushMatrix();
+
+      float rectW = spacing * 1.414;
+      float rectH = spacing / 10;
 
       if(rowIndex % 2 == 0) {
-        // ofSetColor(255, 0, 0);
-        start = glm::vec3(col, row + spacing, 0);
-        end = glm::vec3(col + spacing,row, 0);
+        ofSetColor(255, 200, 200);
+        ofTranslate(col, row, 0);
+        ofRotateZDeg(45);
+        // ofDrawRectangle(-rectW/2, -rectH/2, 0, rectW, rectH);
+        ofDrawEllipse(0, 0, 0, rectW, rectH);
+        // ofDrawLine(-rectW / 2, 0, rectW / 2, 0);
       } else {
-        // ofSetColor(0, 255, 0);
-        float offset = spacing;
-        start = glm::vec3(col + offset, row, 0);
-        end = glm::vec3(col + spacing + offset,row + spacing, 0);
+        ofSetColor(200, 255, 200);
+        ofTranslate(col + spacing, row, 0);
+        ofRotateZDeg(-45);
+        // ofDrawRectangle(-rectW/2, -rectH/2, 0, rectW, rectH);
+        ofDrawEllipse(0, 0, 0, rectW, rectH);
+        // ofDrawLine(-rectW / 2, 0, rectW / 2, 0);
       }
+      ofPopMatrix();
+      material.end();
 
-      ofDrawLine(start, end);
+      // ofDrawLine(start, end);
     }
     rowIndex++;
   }
