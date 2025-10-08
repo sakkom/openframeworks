@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "ofAppRunner.h"
 #include "ofGraphics.h"
 #include "ofMath.h"
 #include "ofMathConstants.h"
@@ -18,30 +19,35 @@ void ofApp::update(){
 void ofApp::draw(){
   ofTranslate(ofGetWidth() / 2.0, ofGetHeight() / 2.0);
   ofPolyline polyline;
-  float radius = 150;
+  float radius = 100;
   float radiusX = radius * 1.414;
   float radiusY = radius * 1;
-  float freq = 3;
-  for(float j = 0; j < TWO_PI * 1 ; j += TWO_PI / 360) {
-    int loop = j / TWO_PI + 1;
-    ofSetRandomSeed(pow(j, 0.8));
-    float radiusNoise = sin(j * freq + loop + ofGetElapsedTimef() * 1) * radius;
-    float mappedRadius = ofMap(radiusNoise, -radius, radius, radius/6, radius);
-    float time = abs(sin(ofGetElapsedTimef() * 2));
+  float petalsLength = ofMap(sin(ofGetElapsedTimef() * 0.5), -1, 1, 1,10);
+  for(float t = 0; t < TWO_PI * 1; t += TWO_PI / (360 * petalsLength)) {
+    int loop = t / TWO_PI + 1;
+    float petals = sin(t * petalsLength + loop + ofGetElapsedTimef() * 1);
+    float staticRadius = ofMap(petals, -1, 1, radius/6, radius);
+
+    // float time = abs(sin(ofGetElapsedTimef() * 2));
+    float time = 0;
     time = time > 0.66f ? 1 : time > 0.33f ? 0.5 : 0;
-    float kaos = pow(time, 2) * radius ;
-    float x = cos(j) * mappedRadius  * radiusX / radius  + ofRandom(-kaos, kaos);
-    float y = sin(j) * mappedRadius * radiusY / radius  + ofRandom(-kaos, kaos);
+    float kaos = pow(time, 2) * ofGetHeight()/2.0 ;
+    ofSetRandomSeed(pow(t, 0.8)  );
+    float offsetX = ofRandom(-kaos, kaos);
+    ofSetRandomSeed(pow(2*t, 0.8));
+    float offsetY = ofRandom(-kaos, kaos);
+    float x = cos(t) * staticRadius  * radiusX / radius + offsetX;
+    float y = sin(t) * staticRadius * radiusY / radius + offsetY;
     polyline.addVertex( x,  y);
   }
 
   polyline.close();
-  polyline.draw();
+  // polyline.draw();
   auto vertices = polyline.getVertices();
   for(auto& vertex : vertices) {
     // ofDrawRectangle(vertex, 1, 5);
-    ofNoFill();
-    ofDrawCircle(vertex, 15);
+    // ofNoFill();
+    ofDrawCircle(vertex, 1);
     ofFill();
   }
 }
